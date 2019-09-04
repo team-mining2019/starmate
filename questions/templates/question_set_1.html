@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block contents %}
+<div class="container">
+
+    <h1> This is Question set 1 </h1>
+
+    <p> 서로의 연애 적합도를 테스트 </p>
+
+    <form method = "POST" action="{%url 'question_set_1' user.id %}"> 
+        {% csrf_token %}
+        
+        <table>
+            <p>질문 1 : 나는 외제차가 좋다.</p> 
+            <input type="radio" name="question_01" value=1>매우 아니다
+            <input type="radio" name="question_01" value=2>아니다
+            <input type="radio" name="question_01" value=3>약간 아니다
+            <input type="radio" name="question_01" value=4>약간 그렇다
+            <input type="radio" name="question_01" value=5>그렇다
+            <input type="radio" name="question_01" value=6>매우 그렇다
+        </table>
+
+        <table>
+            <p>질문 2 : 나는 데이트 할 때에 돈을 다 낸다.</p> 
+            <input type="radio" name="question_02" value=1>매우 아니다
+            <input type="radio" name="question_02" value=2>아니다
+            <input type="radio" name="question_02" value=3>약간 아니다
+            <input type="radio" name="question_02" value=4>약간 그렇다
+            <input type="radio" name="question_02" value=5>그렇다
+            <input type="radio" name="question_02" value=6>매우 그렇다
+        </table>
+
+        <table>
+            <p>질문 3 : 나는 밥을 빨리 먹는다.</p> 
+            <input type="radio" name="question_03" value=1>매우 아니다
+            <input type="radio" name="question_03" value=2>아니다
+            <input type="radio" name="question_03" value=3>약간 아니다
+            <input type="radio" name="question_03" value=4>약간 그렇다
+            <input type="radio" name="question_03" value=5>그렇다
+            <input type="radio" name="question_03" value=6>매우 그렇다
+        </table>
+
+        <button type="next" class="btn btn-primary">Next</button>
+      </form>
+
+</div>
+{%endblock%}

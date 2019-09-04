@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block contents %}
+<div class="container">
+
+    <h1> RESLUT </h1>
+
+    <p> @@need some url to sharing user's info@@ </p>
+
+    <hr> 
+    <p>username : {{user.username}} </p>
+    <p>user id : {{user.id}} </p>
+    <p> result </p>
+    {{user.profile.question_01}}
+    <br>
+    {{user.profile.question_02}}
+    <br>
+    {{user.profile.question_03}}
+    <br>
+    {{user.profile.question_04}}
+    <br>
+    {{user.profile.question_05}}
+    <br>
+    {{user.profile.question_06}}
+    <br>
+    {{user.profile.question_07}}
+    <br>
+    {{user.profile.question_08}}
+    <br>
+    {{user.profile.question_09}}
+    <br>
+    {{user.profile.question_10}}
+    <br>
+    {{user.profile.question_11}}
+    <br>
+    {{user.profile.question_12}}
+    <br>
+    {{user.profile.question_13}}
+    <br>
+    {{user.profile.question_14}}
+    <br>
+    {{user.profile.question_15}}
+
+    <br><hr>
+
+    <a href="{% url 'main' %}"> Go back to Main </a>
+</div>
+{%endblock%}
