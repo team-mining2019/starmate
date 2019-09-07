@@ -4,3 +4,6 @@ from accounts.forms import UserForm, ProfileForm
 
 def main(request):
     return render(request, 'main.html')
+
+def main_from(request):
+    pass

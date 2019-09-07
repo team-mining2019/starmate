@@ -7,7 +7,9 @@ from accounts.forms import ProfileForm, UserForm
 @login_required()
 def loading(request, user_id):
     user = get_object_or_404(User, pk=user_id) 
-    return render(request, 'result.html', {'user': user})
+    my_link = request.build_absolute_uri('/') + str(user_id)
+    
+    return render(request, 'result.html', {'user': user, "my_link": my_link})
 
 @login_required()
 def result(request, user_id):

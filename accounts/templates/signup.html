@@ -1,8 +1,37 @@
+
 {% extends 'base.html' %}
+<head>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(function() {
+                $( "#some_flag" ).dialog({
+                    modal: true,
+                    closeOnEscape: false,
+                    dialogClass: "no-close",
+                    resizable: false,
+                    draggable: false,
+                    width: 600,
+                    buttons: [
+                        {
+                            text: "OK",
+                            click: function() {
+                            $( this ).dialog( "close" );
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
+</head>
 {% block contents %}
 <div class="container">
 
     <h1> This is Signup </h1>
+
+    {% if flag %}
+      <p> USERNAME is already Exist </p>
+    {% endif %}
 
     <form method = "POST" action="{%url 'signup'%}"> 
         {% csrf_token %}
