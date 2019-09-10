@@ -99,8 +99,8 @@ def login_from(request, from_user_id):
             except User.DoesNotExist:
                 raise Http404("User does not exist")
             user.profile.link_from = str(from_user_id)
-            user.save()
-            #profile.save()
+            #user.save()
+            user.profile.save()
             context = {'user': user, "from_user_id": from_user_id,}
             ###from link저장 필요, done이 true면 안하고 바로 result로 넘어가게.
             return render(request, 'question_set_1.html', context)

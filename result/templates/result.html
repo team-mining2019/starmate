@@ -25,7 +25,7 @@
     <hr>
     <p>username : {{user.username}} ::::::::::::::    {% if  link_from is not None %} from_username : {{from_user.username}}   {% endif %} </p>
     <p>user id : {{user.id}}      :::::::::::::::::::      {% if link_from %} from_user id : {{from_user.id}}  {% endif %}    </p>
-    <p> result </p>  
+    <p> result                :::::::::::::::::::     {{link_from}} </p> 
     {{user.profile.question_01}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_01}}  {% endif %}
     <br>
     {{user.profile.question_02}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_02}}  {% endif %}
