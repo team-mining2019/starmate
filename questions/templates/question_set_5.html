@@ -6,11 +6,11 @@
 
     <p> 서로의 연애 적합도를 테스트 </p>
 
-        <form method = "POST" action="{%url 'question_set_5' user.id %}"> 
+    <form method="POST" action="{%url 'question_set_5' user.id %}">
         {% csrf_token %}
-        
+
         <table>
-            <p>질문 13 : 나는 비가오는 날이 좋다.</p> 
+            <p>질문 13 : 나는 비가오는 날이 좋다.</p>
             <input type="radio" name="question_13" value=1>매우 아니다
             <input type="radio" name="question_13" value=2>아니다
             <input type="radio" name="question_13" value=3>약간 아니다
@@ -20,7 +20,7 @@
         </table>
 
         <table>
-            <p>질문 14 : 나는 산보다 바다가 좋다.</p> 
+            <p>질문 14 : 나는 산보다 바다가 좋다.</p>
             <input type="radio" name="question_14" value=1>매우 아니다
             <input type="radio" name="question_14" value=2>아니다
             <input type="radio" name="question_14" value=3>약간 아니다
@@ -30,7 +30,7 @@
         </table>
 
         <table>
-            <p>질문 15 : 나는 매일매일이 활기차다.</p> 
+            <p>질문 15 : 나는 매일매일이 활기차다.</p>
             <input type="radio" name="question_15" value=1>매우 아니다
             <input type="radio" name="question_15" value=2>아니다
             <input type="radio" name="question_15" value=3>약간 아니다
@@ -40,7 +40,7 @@
         </table>
 
         <button type="next" class="btn btn-primary">Next</button>
-      </form>
+    </form>
 
 
 

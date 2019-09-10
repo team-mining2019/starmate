@@ -25,13 +25,13 @@
 {% block contents %}
 <div class="container">
 
-    <h1> This is Signup </h1>
+    <h1> This is Signup from </h1>
 
     {% if flag %}
     <p> USERNAME is already Exist </p>
     {% endif %}
 
-    <form method="POST" action="{%url 'signup'%}">
+    <form method="POST" action="{%url 'signup_from' from_user_id %}">
         {% csrf_token %}
         <table>
             {{form.as_table}}

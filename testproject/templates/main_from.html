@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block contents %}
+<div class="container">
+
+    <h1> This is Main from {{ from_user_id }} </h1>
+
+    <p> 서로의 연애 적합도를 테스트 </p>
+
+
+    {% if user.is_active %}
+    <a href="{% url 'logout' %}"> LOGOUT </a>
+    <hr>
+    <h3>login on</h3>
+    <hr>
+    {{ user.id }}
+    <hr>
+    {{ user.username}}
+
+    {% else %}
+    <a href="{% url 'signup_from' from_user_id %}"> Signup </a>
+    <br>
+    <a href="{% url 'login_from' from_user_id %}"> Login </a>
+    <br>
+    <h3> login off</h3>
+    {% endif %}
+
+
+
+</div>
+{%endblock%}

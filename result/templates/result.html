@@ -1,67 +1,69 @@
 {% extends 'base.html' %}
 {% block contents %}
 <script type="text/javascript">
-        function myFunction() {
-            /* Get the text field */
-            var copyText = document.getElementById("myInput");
+    function myFunction() {
+        /* Get the text field */
+        var copyText = document.getElementById("myInput");
 
-            /* Select the text field */
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
 
-            /* Copy the text inside the text field */
-            document.execCommand("copy");
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
 
-            /* Alert the copied text */
-            alert("Copied the text: " + copyText.value);
-            }
-    </script>
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+    }
+</script>
 <div class="container">
 
     <h1> RESLUT </h1>
 
     <p> @@need some url to sharing user's info@@ </p>
 
-    <hr> 
-    <p>username : {{user.username}} </p>
-    <p>user id : {{user.id}} </p>
-    <p> result </p>
-    {{user.profile.question_01}}
+    <hr>
+    <p>username : {{user.username}} ::::::::::::::    {% if  link_from is not None %} from_username : {{from_user.username}}   {% endif %} </p>
+    <p>user id : {{user.id}}      :::::::::::::::::::      {% if link_from %} from_user id : {{from_user.id}}  {% endif %}    </p>
+    <p> result </p>  
+    {{user.profile.question_01}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_01}}  {% endif %}
     <br>
-    {{user.profile.question_02}}
+    {{user.profile.question_02}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_02}}  {% endif %}
     <br>
-    {{user.profile.question_03}}
+    {{user.profile.question_03}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_03}}  {% endif %}
     <br>
-    {{user.profile.question_04}}
+    {{user.profile.question_04}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_04}}  {% endif %}
     <br>
-    {{user.profile.question_05}}
+    {{user.profile.question_05}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_05}}  {% endif %}
     <br>
-    {{user.profile.question_06}}
+    {{user.profile.question_06}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_06}}  {% endif %}
     <br>
-    {{user.profile.question_07}}
+    {{user.profile.question_07}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_07}}  {% endif %}
     <br>
-    {{user.profile.question_08}}
+    {{user.profile.question_08}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_08}}  {% endif %}
     <br>
-    {{user.profile.question_09}}
+    {{user.profile.question_09}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_09}}  {% endif %}
     <br>
-    {{user.profile.question_10}}
+    {{user.profile.question_10}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_10}}  {% endif %}
     <br>
-    {{user.profile.question_11}}
+    {{user.profile.question_11}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_11}}  {% endif %}
     <br>
-    {{user.profile.question_12}}
+    {{user.profile.question_12}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_12}}  {% endif %}
     <br>
-    {{user.profile.question_13}}
+    {{user.profile.question_13}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_13}}  {% endif %}
     <br>
-    {{user.profile.question_14}}
+    {{user.profile.question_14}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_14}}  {% endif %}
     <br>
-    {{user.profile.question_15}}
+    {{user.profile.question_15}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_15}}  {% endif %}
 
-    <br><hr>
+    <br>
+    <hr>
 
-<input type="text" value="{{ my_link }}" id="myInput">
-<button onclick="myFunction()">Copy text</button>
+    <input type="text" value="{{ my_link }}" id="myInput">
+    <button onclick="myFunction()">Copy text</button>
 
-    <br><hr>
+    <br>
+    <hr>
 
     <a href="{% url 'main' %}"> Go back to Main </a>
 </div>

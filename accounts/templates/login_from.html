@@ -25,18 +25,18 @@
 {% block contents %}
 <div class="container">
 
-    <h1> This is Signup </h1>
+    <h1> This is login from </h1>
 
-    {% if flag %}
-    <p> USERNAME is already Exist </p>
+    {% if flag2 %}
+    <p> USERNAME or PASSWORD is wrong </p>
     {% endif %}
 
-    <form method="POST" action="{%url 'signup'%}">
+    <form method="POST" action="{%url 'login_from' from_user_id%}">
         {% csrf_token %}
         <table>
             {{form.as_table}}
         </table>
-        <button type="signup" class="btn btn-primary">Signup</button>
+        <button type="login" class="btn btn-primary">Login</button>
     </form>
 
 </div>
