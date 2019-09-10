@@ -22,6 +22,8 @@ def signup(request):
             profile.save()
             auth.login(request, new_user)
             context = {'form': form, 'user': new_user,}
+            if profile.done is True:
+                return render(request, 'result.html', context)
             return render(request, 'question_set_1.html', context)
 
         #messages.error(request,'Username is already exist!')
@@ -47,6 +49,8 @@ def login(request):
                 raise Http404("User does not exist")
             context = {'user': user}
             ###from link저장 필요, done이 true면 안하고 바로 result로 넘어가게.
+            if user.profile.done is True:
+                return render(request, 'result.html', context)
             return render(request, 'question_set_1.html', context)
         else:
             return render(request, 'login.html', {'form': form, 'error': 'username or password is incorrect.', 'flag2': True})
@@ -75,6 +79,8 @@ def signup_from(request, from_user_id):
             profile.save()
             auth.login(request, new_user)
             context = {'form': form, 'user': new_user, "from_user_id": from_user_id,}
+            if profile.done is True:
+                return render(request, 'result.html', context)
             return render(request, 'question_set_1.html', context)
 
         #messages.error(request,'Username is already exist!')
@@ -103,6 +109,8 @@ def login_from(request, from_user_id):
             user.profile.save()
             context = {'user': user, "from_user_id": from_user_id,}
             ###from link저장 필요, done이 true면 안하고 바로 result로 넘어가게.
+            if user.profile.done is True:
+                return render(request, 'result.html', context)
             return render(request, 'question_set_1.html', context)
         else:
             return render(request, 'login_from.html', {'form': form, 'error': 'username or password is incorrect.', 'flag2': True})
