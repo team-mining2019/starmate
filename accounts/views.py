@@ -4,7 +4,7 @@ from django.http import Http404
 from django.contrib import messages
 
 from .models import Profile, User
-from .forms import ProfileForm, UserForm
+from .forms import UserForm
 
 
 

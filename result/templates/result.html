@@ -1,70 +1,226 @@
 {% extends 'base.html' %}
 {% block contents %}
-<script type="text/javascript">
-    function myFunction() {
-        /* Get the text field */
-        var copyText = document.getElementById("myInput");
 
-        /* Select the text field */
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+<head>
+    <style>
+        /* Center the loader */
+        #loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            width: 150px;
+            height: 150px;
+            margin: -75px 0 0 -75px;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
 
-        /* Copy the text inside the text field */
-        document.execCommand("copy");
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
 
-        /* Alert the copied text */
-        alert("Copied the text: " + copyText.value);
-    }
-</script>
-<div class="container">
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
 
-    <h1> RESLUT </h1>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
 
-    <p> @@need some url to sharing user's info@@ </p>
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
-    <hr>
-    <p>username : {{user.username}} ::::::::::::::    {% if  link_from is not None %} from_username : {{from_user.username}}   {% endif %} </p>
-    <p>user id : {{user.id}}      :::::::::::::::::::      {% if link_from %} from_user id : {{from_user.id}}  {% endif %}    </p>
-    <p> result                :::::::::::::::::::     {{link_from}} </p> 
-    {{user.profile.question_01}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_01}}  {% endif %}
-    <br>
-    {{user.profile.question_02}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_02}}  {% endif %}
-    <br>
-    {{user.profile.question_03}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_03}}  {% endif %}
-    <br>
-    {{user.profile.question_04}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_04}}  {% endif %}
-    <br>
-    {{user.profile.question_05}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_05}}  {% endif %}
-    <br>
-    {{user.profile.question_06}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_06}}  {% endif %}
-    <br>
-    {{user.profile.question_07}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_07}}  {% endif %}
-    <br>
-    {{user.profile.question_08}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_08}}  {% endif %}
-    <br>
-    {{user.profile.question_09}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_09}}  {% endif %}
-    <br>
-    {{user.profile.question_10}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_10}}  {% endif %}
-    <br>
-    {{user.profile.question_11}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_11}}  {% endif %}
-    <br>
-    {{user.profile.question_12}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_12}}  {% endif %}
-    <br>
-    {{user.profile.question_13}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_13}}  {% endif %}
-    <br>
-    {{user.profile.question_14}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_14}}  {% endif %}
-    <br>
-    {{user.profile.question_15}}  :::::::::::::::::::::::    {% if link_from %} {{from_user.profile.question_15}}  {% endif %}
+        /* Add animation to "page content" */
+        .animate-bottom {
+            position: relative;
+            -webkit-animation-name: animatebottom;
+            -webkit-animation-duration: 1s;
+            animation-name: animatebottom;
+            animation-duration: 1s
+        }
 
-    <br>
-    <hr>
+        @-webkit-keyframes animatebottom {
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
 
-    <input type="text" value="{{ my_link }}" id="myInput">
-    <button onclick="myFunction()">Copy text</button>
+            to {
+                bottom: 0px;
+                opacity: 1
+            }
+        }
 
-    <br>
-    <hr>
+        @keyframes animatebottom {
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
 
-    <a href="{% url 'main' %}"> Go back to Main </a>
-</div>
+            to {
+                bottom: 0;
+                opacity: 1
+            }
+        }
+    </style>
+</head>
+
+<body onload="myFunction()">
+    <!--  이걸로 함수를 돌려줘야 돌아간다!!!!!!!!!-->
+    <script type="text/javascript">
+        var myVar;
+
+        function myFunction() {
+            myVar = setTimeout(showPage, 2500);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("result_container").style.display = "block";
+        }
+
+
+        /* loading을 구현하기 위해 해봤던 실험들과 연습. 그런데 가장 중요한건 body에서 onload를 해주는 것이었음.....   
+        @ 연습용 1 
+        function sayHello() {
+            alert('hello');
+        }
+
+        setTimeout(sayHello, 1000);
+        
+        @ 실험작 1
+        var _showPage = function () {
+            var loader = $("div.loader");
+            var container = $("div.result_container");
+            loader.css("display", "none");
+            container.css("display", "block");
+        };
+
+        setTimeout(_showPage, 1000);
+
+
+        @ 실험작 2
+        function show() {
+            var loader = $("div.loader");
+            var container = $("div.result_container");
+            loader.css("display", "none");
+            container.css("display", "block");
+        }
+
+        setTimeout(show, 1000);
+        
+
+        @실험작 3
+        setTimeout(function () {
+            var loader = $("div.loader");
+            var result_container = $("div.result_container");
+            loader.css("display", "none");
+            result_container.css("display", "block");
+        }, 1500);
+        */
+
+        //하단부 copy 하는 js 함수.
+        function copyFunction() {
+            /* Get the text field */
+            var copyText = document.getElementById("myInput");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+            /* Alert the copied text */
+            alert("Copied the text: " + copyText.value);
+        }
+    </script>
+
+    <div id="loader"></div>
+
+
+    <div class='result_container' id='result_container' style='display:none;'>
+
+        <div class="container">
+
+            <h1> RESLUT </h1>
+
+            <p> @@need some url to sharing user's info@@ </p>
+
+            <hr>
+            <p>username : {{user.username}} :::::::::::::: {% if  link_from is not None %} from_username :
+                {{from_user.username}} {% endif %} </p>
+            <p>user id : {{user.id}} ::::::::::::::::::: {% if link_from %} from_user id : {{from_user.id}} {% endif %}
+            </p>
+            <p> result ::::::::::::::::::: {{link_from}} </p>
+            {{user.profile.question_01}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_01}}
+            {% endif %}
+            <br>
+            {{user.profile.question_02}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_02}}
+            {% endif %}
+            <br>
+            {{user.profile.question_03}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_03}}
+            {% endif %}
+            <br>
+            {{user.profile.question_04}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_04}}
+            {% endif %}
+            <br>
+            {{user.profile.question_05}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_05}}
+            {% endif %}
+            <br>
+            {{user.profile.question_06}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_06}}
+            {% endif %}
+            <br>
+            {{user.profile.question_07}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_07}}
+            {% endif %}
+            <br>
+            {{user.profile.question_08}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_08}}
+            {% endif %}
+            <br>
+            {{user.profile.question_09}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_09}}
+            {% endif %}
+            <br>
+            {{user.profile.question_10}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_10}}
+            {% endif %}
+            <br>
+            {{user.profile.question_11}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_11}}
+            {% endif %}
+            <br>
+            {{user.profile.question_12}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_12}}
+            {% endif %}
+            <br>
+            {{user.profile.question_13}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_13}}
+            {% endif %}
+            <br>
+            {{user.profile.question_14}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_14}}
+            {% endif %}
+            <br>
+            {{user.profile.question_15}} ::::::::::::::::::::::: {% if link_from %} {{from_user.profile.question_15}}
+            {% endif %}
+
+            <br>
+            <hr>
+
+            <input type="text" value="{{ my_link }}" id="myInput">
+            <button onclick="copyFunction()">Copy text</button>
+
+            <br>
+            <hr>
+
+            <a href="{% url 'main' %}"> Go back to Main </a>
+        </div>
+
+    </div>
+</body>
 {%endblock%}
