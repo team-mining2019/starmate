@@ -110,7 +110,8 @@ def login_from(request, from_user_id):
             context = {'user': user, "from_user_id": from_user_id,}
             ###from link저장 필요, done이 true면 안하고 바로 result로 넘어가게.
             if user.profile.done is True:
-                return render(request, 'result.html', context)
+                user_id = user.id
+                return redirect('loading', user_id)
             return render(request, 'question_set_1.html', context)
         else:
             return render(request, 'login_from.html', {'form': form, 'error': 'username or password is incorrect.', 'flag2': True})

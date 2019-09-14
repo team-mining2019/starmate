@@ -17,7 +17,8 @@ def question_set_1(request, user_id):
         user.profile.question_01 = question_01
         user.profile.question_02 = question_02
         user.profile.question_03 = question_03
-        user.profile.save()
+        #fixed from "user.profile.save()" for getting some benefit
+        user.profile.save(update_fields=['question_01', 'question_02', 'question_03'])
         return render(request, 'question_set_2.html', {'user': user} )
     else:
         try:
@@ -36,7 +37,7 @@ def question_set_2(request, user_id):
         user.profile.question_04 = question_04
         user.profile.question_05 = question_05
         user.profile.question_06 = question_06
-        user.profile.save()
+        user.profile.save(update_fields=['question_04', 'question_05', 'question_06'])
         return render(request, 'question_set_3.html', {'user': user} )
     else:
         try:
@@ -55,7 +56,7 @@ def question_set_3(request, user_id):
         user.profile.question_07 = question_07
         user.profile.question_08 = question_08
         user.profile.question_09 = question_09
-        user.profile.save()
+        user.profile.save(update_fields=['question_07', 'question_08', 'question_09'])
         return render(request, 'question_set_4.html', {'user': user} )
     else:
         try:
@@ -74,7 +75,7 @@ def question_set_4(request, user_id):
         user.profile.question_10 = question_10
         user.profile.question_11 = question_11
         user.profile.question_12 = question_12
-        user.profile.save()
+        user.profile.save(update_fields=['question_10', 'question_11', 'question_12'])
         return render(request, 'question_set_5.html', {'user': user} )
     else:
         try:
@@ -94,7 +95,7 @@ def question_set_5(request, user_id):
         user.profile.question_14 = question_14
         user.profile.question_15 = question_15
         user.profile.done = True
-        user.profile.save()
+        user.profile.save(update_fields=['question_13', 'question_14', 'question_15', 'done'])
         return redirect('loading', user_id)    ###result로 가고 저장도 따로 해주고 해야함
     else:
         try:

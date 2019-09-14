@@ -10,6 +10,8 @@ def loading(request, user_id):
     my_link = request.build_absolute_uri('/') + str(user_id)
     if user.profile.link_from is not None:
         link_from = user.profile.link_from
+        user.profile.done = True
+        user.profile.save(update_fields=['done'])
         try:
             from_user = User.objects.get(id=int(link_from))
         except  User.DoesNotExist:
