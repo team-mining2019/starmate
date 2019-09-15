@@ -79,7 +79,7 @@ def signup_from(request, from_user_id):
             profile.save()
             auth.login(request, new_user)
             context = {'form': form, 'user': new_user, "from_user_id": from_user_id,}
-            if profile.done is True:
+            if profile.done is True: #근데 이건 될 일이 없음.
                 return render(request, 'result.html', context)
             return render(request, 'question_set_1.html', context)
 

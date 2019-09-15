@@ -6,6 +6,14 @@
 
     <p> 서로의 연애 적합도를 테스트 </p>
 
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <form method="POST" action="{%url 'question_set_4' user.id %}">
         {% csrf_token %}
 
