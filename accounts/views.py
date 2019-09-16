@@ -114,7 +114,8 @@ def login_from(request, from_user_id):
                 return redirect('loading', user_id)
             return render(request, 'question_set_1.html', context)
         else:
-            return render(request, 'login_from.html', {'form': form, 'error': 'username or password is incorrect.', 'flag2': True})
+            context = {'user': user, "from_user_id": from_user_id, 'form': form, 'error': 'username or password is incorrect.', 'flag2': True,}
+            return render(request, 'login_from.html', context)
     else:
         form = UserForm()
         context = {'form': form, "from_user_id": from_user_id,}
